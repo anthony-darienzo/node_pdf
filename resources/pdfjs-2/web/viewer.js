@@ -4234,7 +4234,7 @@ var defaultOptions = {
     kind: OptionKind.VIEWER + OptionKind.PREFERENCE
   },
   defaultUrl: {
-    value: '/pdfjs-2/web/compressed.tracemonkey-pldi-09.pdf',
+    value: '/iridium/node/pdfjs-2/web/compressed.tracemonkey-pldi-09.pdf',
     kind: OptionKind.VIEWER
   },
   defaultZoomValue: {
@@ -4323,7 +4323,7 @@ var defaultOptions = {
     kind: OptionKind.API
   },
   cMapUrl: {
-    value: '/pdfjs-2/web/cmaps/',
+    value: '/iridium/node/pdfjs-2/web/cmaps/',
     kind: OptionKind.API
   },
   disableAutoFetch: {
@@ -4372,7 +4372,7 @@ var defaultOptions = {
     kind: OptionKind.WORKER
   },
   workerSrc: {
-    value: '/pdfjs-2/build/pdf.worker.js',
+    value: '/iridium/node/pdfjs-2/build/pdf.worker.js',
     kind: OptionKind.WORKER
   }
 };
@@ -4480,7 +4480,7 @@ var pdfjsLib;
 if (typeof window !== 'undefined' && window['pdfjs-dist/build/pdf']) {
   pdfjsLib = window['pdfjs-dist/build/pdf'];
 } else {
-  pdfjsLib = require('/pdfjs-2/build/pdf.js');
+  pdfjsLib = require('/iridium/node/pdfjs-2/build/pdf.js');
 }
 
 module.exports = pdfjsLib;

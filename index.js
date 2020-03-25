@@ -48,14 +48,11 @@ app.get('/update/:filename', (req,res) => {
 
 /** Grab anything that has /pdf/ */
 app.get('/pdf', (req,res) => {
-    res.redirect(
-        `/viewer?file=${current_pdf}`
-        //path.join('/pdfjs-2','web',`viewer2.html?file=${current_pdf}`)
-    );
+    // This program is running on iridium, so we must pass the correct URI
+    res.redirect(`/iridium/node/viewer?file=${current_pdf}`);
 });
 app.get('/pdf/:pdf_file',(req,res) => {
-    res.redirect(`/viewer?file=${req.params.pdf_file}`);
-    //res.redirect(path.join('/pdfjs-2','web',`viewer2.html?file=${req.params.pdf_file}`));
+    res.redirect(`/iridium/node/viewer?file=${req.params.pdf_file}`);
 });
 
 io.on('connection',(socket) => {
