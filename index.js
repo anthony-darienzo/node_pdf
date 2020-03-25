@@ -40,7 +40,7 @@ app.get('/viewer', (req,res) => {
 
 /** Set the name of the pdf file to be tracked */
 app.get('/update/:filename', (req,res) => {
-    current_pdf = path.join(path.join('iridium','node','cwd',req.params.filename));
+    current_pdf = path.join(path.join('/iridium','node','cwd',req.params.filename));
     res.json({
         'current_pdf': current_pdf
     });
@@ -52,7 +52,7 @@ app.get('/pdf', (req,res) => {
     res.redirect(`/iridium/node/viewer?file=${current_pdf}`);
 });
 app.get('/pdf/:pdf_file',(req,res) => {
-    res.redirect(`/iridium/node/viewer?file=${req.params.pdf_file}`);
+    res.redirect(`/iridium/node/viewer?file=${path.join('/iridium','node',req.params.pdf_file)}`);
 });
 
 io.on('connection',(socket) => {
