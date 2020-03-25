@@ -40,7 +40,7 @@ app.get('/viewer', (req,res) => {
 
 /** Set the name of the pdf file to be tracked */
 app.get('/update/:filename', (req,res) => {
-    current_pdf = path.join('/cwd',req.params.filename);
+    current_pdf = path.join(path.join('iridium','node','cwd',req.params.filename));
     res.json({
         'current_pdf': current_pdf
     });
