@@ -30,11 +30,19 @@ See https://github.com/adobe-type-tools/cmap-resources
   <title>PDF.js viewer</title>
 
 
-  <link rel="stylesheet" href="/iridium/node/pdfjs-2/web/viewer.css">
+  <link rel="stylesheet" href="/node/pdfjs-2/web/viewer.css">
 
 
   <!-- This snippet is used in production (included from viewer.html) -->
-  <link rel="resource" type="application/l10n" href="/iridium/node/pdfjs-2/locale/locale.properties">
+  <link rel="resource" type="application/l10n" href="/node/pdfjs-2/locale/locale.properties">
+  <script src="/node/pdfjs-2/build/pdf.js"></script>
+
+
+  <script src="/node/pdfjs-2/web/viewer.js"></script>
+
+</head>
+
+<body tabindex="1" class="loadingInProgress">
   <script src="/socket.io/socket.io.js"></script>
   <script>
     var socket = io();
@@ -42,23 +50,14 @@ See https://github.com/adobe-type-tools/cmap-resources
     socket.on('connect', () => {
       var urlParams = new URLSearchParams(window.location.search);
       pdf_file = urlParams.get('file');
-      socket.emit('initialize',{
-        pdf_file: pdf_file
-      });
+      socket.emit('initialize',{});
     });
 
     socket.on('reload', (data) => {
-      location.reload();
+      console.log('Received reload notice from sockets');
+      PDFViewerApplication.open(data.current_pdf);
     });
   </script>
-  <script src="/iridium/node/pdfjs-2/build/pdf.js"></script>
-
-
-  <script src="/iridium/node/pdfjs-2/web/viewer.js"></script>
-
-</head>
-
-<body tabindex="1" class="loadingInProgress">
   <div id="outerContainer">
 
     <div id="sidebarContainer">
